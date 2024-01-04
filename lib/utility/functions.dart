@@ -6,30 +6,22 @@ double calculateAcceleration(AccelerometerEvent event) {
   return sqrt((event.x * event.x) + (event.y * event.y) + (event.z * event.z));
 }
 
-////////////////////// // Buffer'a ivme vektörü ekle
+////////////////////// // Buffer'a ivme vektörü eklenir
 void addToBuffer4(double acceleration) {
   if (accelerationBuffer.length >= 4) {
-    // Buffer 4 elemanlıysa ilk elemanı çıkar
     accelerationBuffer.removeAt(0);
   }
-  // Buffer'a yeni ivme vektörünü ekle
   accelerationBuffer.add(acceleration);
 
-  // Buffer'ı yazdır (isteğe bağlı)
-  //   print("Buffer: $accelerationBuffer");
 }
 
 ////////////////////////////////////////////////////
 void addToBuffer2(double ortalamaIvme) {
   if (turevBuffer.length >= 2) {
-    // Buffer 4 elemanlıysa ilk elemanı çıkar
     turevBuffer.removeAt(0);
   }
-  // Buffer'a yeni ivme vektörünü ekle
   turevBuffer.add(ortalamaIvme);
 
-  // Buffer'ı yazdır (isteğe bağlı)
-  // print("Buffer: $turevBuffer");
 }
 
 ////////////////////////////////////////////////////////////
@@ -58,7 +50,6 @@ double ortalamaTurevFiltresi() {
 
 /////////////////////////////////////////////////////
 double turevHesapla() {
-  // İvme vektörlerinin ardışık ölçümler arasındaki farkları hesapla
   if (accelerationBuffer.length >= 2) {
     return (accelerationBuffer[1] - accelerationBuffer[0]) / period;
   }
